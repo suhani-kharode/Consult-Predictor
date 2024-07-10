@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease</title>
+    <!-- <link rel="stylesheet" href="heart.css"> -->
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+
+ }
+
+ /* Navbar CSS */
+
+   nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+    background-color: rgb(45, 45, 49);
+   }
+   nav ul {
+    display: flex;
+    justify-content: center;
+   }
+   nav ul a {
+    list-style: none;
+    margin: 0 23px;
+    text-decoration: none;
+    color: white;
+   }
+
+   nav ul a:hover {
+      color: rgb(153,156,223);
+      font-size: 1.01rem;
+   }
+
+   
+ .left {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+ }
+
+/* Four slids css */
+ .heading{
+   display: flex;
+   justify-content: center;
+   margin: 20px 0;
+ }
+
+ .headingL{
+  display: flex;
+  justify-content: center;
+  margin: 7px 0;
+}
+
+ .rightmain {
+   width: 70%;
+ } 
+ .leftmainK{
+  background-image: cover;
+  
+ } 
+
+ .hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+ }
+ 
+ input { 
+  fill-opacity: 10px;
+   width: 100%;
+   margin: 11px 0;
+   padding: 6px;
+ }
+
+ .option{
+  fill-opacity: 10px;
+  width: 101%;
+  margin: 11px 0;
+  padding: 6px;
+ }
+
+ .btn {
+   background-color: red;
+   color: white;
+   margin: 5px 0;
+   padding: 7px;
+ }
+ .btn:hover {
+  cursor: pointer;
+}
+
+
+/* First page css */
+.slide{
+  height: 600px;
+  width: 100%;
+}
+.square{
+  padding-top: 50px;
+  flex-direction: row;
+
+}
+</style>
+</head>
+
+
+
+<body>
+    <header>
+        <nav>
+            <a class="left" href="/">Health App</a>
+            <div class="right">
+                <ul>
+                    <a href="/heart">Heart Disease (Current)</a> 
+                    <a href="/kidney">Kidney Disease</a>
+                    <a href="/diabetes">Diabetes</a>
+                    <a href="/liver">Liver Disease</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1 class="heading">Know YOUR chances Of Getting A Heart Disease In One Click!</h1>
+        <hr/>
+        <div class="hero">
+        <div class="leftmain">
+            <img src="{{url_for('static',filename='images/heart.jpeg')}}" >
+        </div>
+        <div class="rightmain">
+            <form action="{{url_for('predict_heart')}}" method="POST">
+                <label for="cp">Chest Pain Type</label>
+                <select id="cp" name="cp" class="option">
+                    <option value="0">Typical Angina</option>
+                    <option value="1">Atypical Angina</option>
+                    <option value="2">Non-Angina Pain</option>
+                    <option value="3">Asymptomatic</option>
+                 </select>
+
+                 <label for="trestbps">Resting Blood Pressure (in mm Hg)</label>
+                 <input type="number" id="trestbps" name="trestbps" placeholder="Resting Blood Pressure">
+
+                 <label for="chol">Serum Cholestoral in mg/dl</label>
+                <input type="number" id="chol" name="chol" placeholder="Serum Cholestoral">
+
+                 <label for="fbs">Fasting Blood Sugar</label>
+                 <select id="fbs" name="fbs" class="option">
+                    <option value="0">Fasting Blood Sugar < 120 mg/dl</option>
+                    <option value="1">Fasting Blood Sugar > 120 mg/dl</option>
+                 </select>
+
+                 <label for="restecg">Resting Electro-cardiographic Result</label>
+                 <select id="restecg" name="restecg" class="option">
+                    <option value="0">Normal</option>
+                    <option value="1">having ST-T wave abnormality</option>
+                    <option value="2">showing probable or definite left ventricular hypertrophy Estes criteria</option>
+                 </select>
+
+                  <label for="thalach">Maximum Heart Rate Achieved</label>
+                  <input type="number" id="thalach" name="thalach">
+
+                  <label for="exang">Exercise Induced Angina</label>
+                  <select id="exang" name="exang" class="option">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                 </select>
+                 <button type="submit" class="btn">Predict</button>
+            </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

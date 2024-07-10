@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Disease</title>
+    <!-- <link rel="stylesheet" href="heart.css"> -->
+
+    <!-- css -->
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+
+ }
+
+ /* Navbar CSS */
+
+   nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+    background-color: rgb(45, 45, 49);
+   }
+   nav ul {
+    display: flex;
+    justify-content: center;
+   }
+   nav ul a {
+    list-style: none;
+    margin: 0 23px;
+    text-decoration: none;
+    color: white;
+   }
+
+   nav ul a:hover {
+      color: rgb(153,156,223);
+      font-size: 1.01rem;
+   }
+
+   
+ .left {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+ }
+
+/* Four slids css */
+ .heading{
+   display: flex;
+   justify-content: center;
+   margin: 20px 0;
+ }
+
+ .headingL{
+  display: flex;
+  justify-content: center;
+  margin: 7px 0;
+}
+
+ .rightmain {
+   width: 70%;
+ } 
+ .leftmainK{
+  background-image: cover;
+  
+ } 
+
+ .hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+ }
+ 
+ input { 
+  fill-opacity: 10px;
+   width: 100%;
+   margin: 11px 0;
+   padding: 6px;
+ }
+
+ .option{
+  fill-opacity: 10px;
+  width: 101%;
+  margin: 11px 0;
+  padding: 6px;
+ }
+
+ .btn {
+   background-color: red;
+   color: white;
+   margin: 5px 0;
+   padding: 7px;
+ }
+ .btn:hover {
+  cursor: pointer;
+}
+
+
+/* First page css */
+.slide{
+  height: 600px;
+  width: 100%;
+}
+.square{
+  padding-top: 50px;
+  flex-direction: row;
+
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="left" href="/">Health App</a>
+            <div class="right">
+                <ul>
+                  <a href="/heart">Heart Disease</a> 
+                  <a href="/kidney">Kidney Disease (Current)</a>
+                  <a href="/diabetes">Diabetes</a>
+                  <a href="/liver">Liver Disease</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1 class="heading">Know YOUR chances Of Getting A Kidney Disease In One Click!</h1>
+        <hr/>
+        <div class="hero">
+        <div class="leftmain">
+            <img src="{{url_for('static',filename='images/kidney.jpeg')}}">
+        </div>
+        <div class="rightmain">
+            <form action="{{url_for('predict_kidney')}}" method='POST'>
+                <label for="Blood Pressure">Blood Pressure</label>
+                <input type="number" name="Blood Pressure" id="Blood Pressure" required="required" placeholder="Blood Pressure">
+
+                 <label for="Specific Gravity">Specific Gravity</label>
+                 <input type="number" name="Specific Gravity" id="Specific Gravity" required="required" placeholder="Specific Gravity">
+
+                 <label for="Albumin">Albumin</label>
+                <input type="number" name="Albumin" id="Albumin" required="required" placeholder="Albumin">
+
+                 <label for="Sugar">Blood Sugar Level(mm/Hg)</label>
+                 <input type="number" name="Sugar" id="Sugar" required="required" placeholder="Blood Sugar Level(mm/Hg)">
+
+                 <label for="Red Blood Cells">Red Blood Cells Count(millions/cmm)</label>
+                 <input type="number" name="Red Blood Cells" id="Red Blood Cells" required="required" placeholder="Red Blood Cell Count(millions/cmm)">
+
+                  <label for="Pus Cells:normal">Pus Cell Count</label>
+                  <input type="number" name="Pus Cells:normal" id="Pus Cells:normal" required="required" placeholder="Pus Cell Count">
+                  
+                  <label for="Pus Cell Clumps:present">Pus Cell Clumps</label>
+                  <input type="number" name="Pus Cell Clumps:present" id="Pus Cell Clumps:present" required="required" placeholder="Pus Cell Clumps">
+
+                  <button class="btn">Predict</button>
+
+            </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
